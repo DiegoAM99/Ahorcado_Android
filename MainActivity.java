@@ -20,6 +20,17 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().add(R.id.ventanaJuego, new VentanaAhorcado()).commit();
         }
+        palabraOculta = escogePalabra();
+    }
+    @Override
+    protected void onStart(){
+        super.onStart();
+        palabraOculta = escogePalabra();
+        String barras = "";
+        for(int i=0; i<palabraOculta.length();i++){
+            barras += "_ ";
+        }
+        ((TextView) findViewById(R.id.palabraConGuiones)).setText(barras);
     }
     public void botonPulsado(View vista){
     Button boton = (Button) findViewById(vista.getId());
